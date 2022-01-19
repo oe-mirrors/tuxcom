@@ -5,15 +5,15 @@ from Plugins.Plugin import PluginDescriptor
 class TuxComStarter(Screen):
 	skin = """
 		<screen position="1,1" size="1,1" title="TuxTXT" >
-                </screen>"""
+	</screen>"""
 
-        def __init__(self, session, args = None):
-        	self.skin = TuxComStarter.skin
+	def __init__(self, session, args = None):
+		self.skin = TuxComStarter.skin
 		Screen.__init__(self, session)
 		self.container=eConsoleAppContainer()
 		self.container.appClosed.append(self.finished)
 		self.runapp()
-		
+
 	def runapp(self):
 		eDBoxLCD.getInstance().lock()
 		eRCInput.getInstance().lock()
@@ -31,4 +31,3 @@ def main(session, **kwargs):
 
 def Plugins(**kwargs):
 	return PluginDescriptor(name="TuxCom", description="TuxBox Commander", where = PluginDescriptor.WHERE_PLUGINMENU, fnc=main)
-	
